@@ -6,7 +6,7 @@ import {
 } from "../../lib/sanity";
 import Image from "next/image";
 import { useState } from "react";
-import useRouter from "next/router";
+import { useRouter } from "next/router";
 
 const recipeQuery = `
 *[_type == "recipe" && slug.current == $slug][0]{
