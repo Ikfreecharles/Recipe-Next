@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PortableText, sanityClient, urlFor } from "../../lib/sanity";
+import { useRouter } from "next/router";
 
 const chefQuery = `*[_type == "chef" && slug.current == $slug][0]{
    _id,
@@ -9,6 +10,9 @@ const chefQuery = `*[_type == "chef" && slug.current == $slug][0]{
 }`;
 
 export default function Chef({ data }) {
+  const router = useRouter();
+  if (router.isFallback) return <div>Loading...</div>;
+
   const { chef } = data;
   return (
     <article>
